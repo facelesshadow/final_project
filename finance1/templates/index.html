@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+<h1>Index</h1>
+    <form action="/index" method="post">
+
+
+
+
+
+
+        <table>
+            <tr>
+                <th>Symbol</th>
+                <th>Quantity</th>
+                <th>Current Price</th>
+                <th>Total Price</th>
+            </tr>
+            {% for entry in final_list %}
+            <tr>
+
+                <td>{{ entry["symbol"] }}</td>
+                <td>{{ entry["qty"] }}</td>
+                <td>{{ entry["current_price"] | usd}}</td>
+                <td>{{ entry["total_stock_cash"] | usd}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <p style="margin-top: 30px">Current Cash balance: {{ cash | usd}} USD<p>
+        <p>Grand Total: {{ grand_total | usd}} USD<p>
+
+
+
+    </form>
+{% endblock %}
